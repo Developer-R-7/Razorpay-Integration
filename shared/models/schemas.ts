@@ -6,3 +6,11 @@ export const OrderSchema = object({
   });
   
 export type orderQuery = TypeOf<typeof OrderSchema>;
+
+export interface orderItemsSchema {
+  id: string;
+  amount: number;
+  attempts: number;
+  currency: string;
+  created_at: number;
+}

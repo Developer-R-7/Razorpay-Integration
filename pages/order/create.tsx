@@ -3,31 +3,42 @@ import NavBar from '../../components/NavBar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useEffect } from 'react';
+
 function create() {
   async function handleform(event: FormEvent<HTMLFormElement>) {
-    toast('🦄 Wow so easy!', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
     try {
       event.preventDefault();
       const formData = {
         amount: parseInt((event.currentTarget.elements[0] as HTMLInputElement).value),
         currency: (event.currentTarget.elements[1] as HTMLInputElement).value,
       };
-      console.log(formData);
-      const result = await axios.get('../api/orders', {
-        params: { amount: formData.amount, currency: formData.currency },
-      });
-      console.log(result);
+      // const result = await axios.get('../api/orders', {
+      //   params: { amount: formData.amount, currency: formData.currency },
+      // });
+      // console.log(result.data);
     } catch (e) {
       console.log(e);
     }
+    const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 3000));
+    toast.promise(
+      resolveAfter3Sec,
+      {
+        pending: 'Drafting your order ⌛',
+        success: 'Order Generated👌',
+        error: 'Oops! Something went wrong',
+      },
+      {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      },
+    );
   }
   return (
     <div>
