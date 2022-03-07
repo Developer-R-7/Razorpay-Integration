@@ -24,7 +24,7 @@ function create() {
       resolveAfter3Sec,
       {
         pending: 'Drafting your order ⌛',
-        success: 'Order Generated👌',
+        success: 'Order Generated👌,Navigate to view orders',
         error: 'Oops! Something went wrong',
       },
       {
