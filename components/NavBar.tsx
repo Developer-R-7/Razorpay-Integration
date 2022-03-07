@@ -15,7 +15,8 @@ function NavBar() {
           <div className="text-sm lg:flex-grow"></div>
           <div>
             <a
-              href="#"
+              href="https://github.com/Developer-R-7/Razorpay-Integration" 
+              target="_blank"
               className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
             >
               Open Github Repo ❣️
