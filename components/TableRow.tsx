@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { orderItemsSchema } from '../shared/models/schemas';
 
 function TableRow(props: orderItemsSchema) {
+  const unixTime = props.created_at;
+  const date = new Date(unixTime * 1000);
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -17,11 +19,11 @@ function TableRow(props: orderItemsSchema) {
         </div>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{props.amount}</p>
+        <p className="text-gray-900 whitespace-no-wrap">&#8377;{props.amount / 100}</p>
         <p className="text-gray-600 whitespace-no-wrap">{props.currency}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">Sept 28, 2019</p>
+        <p className="text-gray-900 whitespace-no-wrap">{date.toLocaleDateString('en-US')}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">

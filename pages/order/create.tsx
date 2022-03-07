@@ -13,10 +13,10 @@ function create() {
         amount: parseInt((event.currentTarget.elements[0] as HTMLInputElement).value),
         currency: (event.currentTarget.elements[1] as HTMLInputElement).value,
       };
-      // const result = await axios.get('../api/orders', {
-      //   params: { amount: formData.amount, currency: formData.currency },
-      // });
-      // console.log(result.data);
+      const result = await axios.get('../api/orders', {
+        params: { amount: formData.amount, currency: formData.currency },
+      });
+      console.log(result.data);
     } catch (e) {
       console.log(e);
     }
