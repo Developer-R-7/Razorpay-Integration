@@ -3,14 +3,13 @@ import NavBar from '../../components/NavBar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 function create() {
   async function handleform(event: FormEvent<HTMLFormElement>) {
     try {
       event.preventDefault();
       const formData = {
-        amount: parseInt((event.currentTarget.elements[0] as HTMLInputElement).value),
+        amount: parseInt((event.currentTarget.elements[0] as HTMLInputElement).value) * 100,
         currency: (event.currentTarget.elements[1] as HTMLInputElement).value,
       };
       const result = await axios.get('../api/orders', {
